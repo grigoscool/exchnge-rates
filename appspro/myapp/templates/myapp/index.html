@@ -1,0 +1,35 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+	{% csrf_token %}
+
+		<label for="amount" value="0">Сумма</label>
+		<input  type="text" id="amount" name="amount">
+		<div>
+			<label for="form_cur">отдаем</label>
+			<select id="form_cur" name='form_cur' value="{{ form_cur }}">
+				{% for cur in curs %}
+					<option value="{{ cur }}" {% if form_cur == cur %}selected{% endif %} >{{ cur }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div>
+			<label for="out-cur">получаем</label>
+			<select id="out-cur" name="out_cur" value="{{ out_cur }}">
+				{% for cur in curs %}
+					<option value="{{ cur }}" {% if form_cur == cur %}selected{% endif %}>{{ cur }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div>
+			{% if total %}
+				<h1>Итого {{ total }}</h1>
+			{% endif %}
+		</div>
+		<input type="submit" value="рассчитать">
+
+	</form>
+
+
+{% endblock content %}

@@ -7,7 +7,7 @@ def index(request):
 
     url = "https://v6.exchangerate-api.com/v6/91697ffd3e1ee0d705b57ffe/latest/USD"
     headers = {
-        "apikey": "91697ffd3e1ee0d705b57ffe"
+        "apikey": "?"
     }
     response = requests.get(url, headers=headers).json()
     result = response.get('conversion_rates')
